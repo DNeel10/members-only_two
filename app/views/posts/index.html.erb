@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <p>Signed in as: <%= current_user.name %></p>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= button_to "Sign In", new_user_session_path %>
+<% end %>
+
+<h1>Posts</h1>
+
+<div>
+  <% @posts.each do |post| %>
+    <p><%= link_to post.title, post %>
+    <% if user_signed_in? %>
+      by: <%= post.user.name %>
+    <% end %>
+  <% end %>
+</div>
+
