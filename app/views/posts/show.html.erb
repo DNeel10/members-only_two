@@ -3,3 +3,8 @@
 <p><small>written by: <%= @post.user.name %></small></p>
 
 <p><%= @post.body %></p>
+
+<%= link_to "Delete Post", @post, data: { turbo_method: :delete,
+                                         turbo_confirm: "Are you sure?" }  %>
+
+<%= link_to "Return to home", root_path %>
